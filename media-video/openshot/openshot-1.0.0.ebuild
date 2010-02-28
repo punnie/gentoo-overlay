@@ -3,7 +3,7 @@
 # $Header: $
 
 MY_PV="${PV}-1"
-MY_P="${PN}_${MY_PV}"
+MY_P="${PN}-${MY_PV}"
 
 EAPI="2"
 
