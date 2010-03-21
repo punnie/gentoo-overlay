@@ -1,0 +1,12 @@
+<layman>
+ <overlays>
+  <overlay type="git" src="git://github.com/daltonmatos/gentoo-overlay.git" contact="daltonmatos@gmail.com" name="dalton">
+   <link>
+      http://github.com/daltonmatos/gentoo-overlay
+   </link>
+  <description> 
+    A Gentoo overlay with some ebuilds for projects that I am interested to and are not yet on the official tree. 
+  </description>
+ </overlay>
+</overlays>
+</layman>
