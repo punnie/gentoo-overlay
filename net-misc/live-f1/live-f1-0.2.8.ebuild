@@ -13,10 +13,12 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
 
-DEPEND=""
+DEPEND="dev-util/pkgconfig
+	>=net-misc/neon-0.24
+	sys-libs/ncurses"
+
 RDEPEND="${DEPEND}"
 
-
 src_install(){
-	emake DESTDIR="${D}" install
+	einstall
 }
