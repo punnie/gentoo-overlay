@@ -15,8 +15,7 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
 
-DEPEND="dev-db/sqlite:3
-	>=net-libs/zeromq-2.0.10"
+DEPEND="dev-db/sqlite:3"
 
 RDEPEND="${DEPEND}"
 
