@@ -29,7 +29,5 @@ src_prepare(){
 
 src_install(){
 	cd ${WORKDIR}/${PN}-src-${PV}
-	#mkdir -p ${D}usr/local/bin
-	#INSTALLDIR=${D}usr/local/bin/fossil einstall
-	einstall
+	dobin fossil || die "dobin failed"
 }
