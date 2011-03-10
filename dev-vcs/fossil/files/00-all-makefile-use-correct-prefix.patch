@@ -1,0 +1,12 @@
+--- Makefile.old	2011-03-10 18:20:38.000000000 -0300
++++ Makefile	2011-03-10 18:21:05.000000000 -0300
+@@ -9,7 +9,8 @@
+ #    the following to point from the build directory to the src/ folder.
+ #
+ SRCDIR = ./src
+-
++prefix=${prefix:-/usr/local/bin}
++INSTALLDIR=${prefix}
+ #### The directory into which object code files should be written.
+ #
+ #
