@@ -16,7 +16,7 @@ KEYWORDS="~x86"
 IUSE=""
 
 DEPEND="dev-db/sqlite:3
-	>=net-libs/zeromq-2.0.10"
+	=net-libs/zeromq-2.0.10"
 
 RDEPEND="${DEPEND}"
 
@@ -28,4 +28,6 @@ src_prepare(){
 
 src_install(){
 	einstall
+	newconfd "${FILESDIR}"/mongrel2.confd mongrel2
+	newinitd "${FILESDIR}"/mongrel2.initd mongrel2
 }

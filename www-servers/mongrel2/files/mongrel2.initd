@@ -1,0 +1,63 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+source /etc/conf.d/mongrel2
+
+opts="${opts} list"
+
+
+query(){
+  sqlite3 -line -noheader ${CONFIG_DB} "${1}"
+}
+
+check_default_host(){
+  ebegin "Checking host consistency for mongrel2 instance uuid=${SVCNAME}"
+  def_host=`query "select h.name from host h left join server s on h.server_id = s.id where s.uuid = '${SVCNAME}' and h.name = s.default_host;"`
+  [[ -z ${def_host} ]]
+}
+
+depend(){ 
+  need net
+}
+
+start() {
+  server=${SVCNAME}
+  ebegin "Starting mongrel2 instance, server ${server}"
+  if check_default_host; then
+    eerror "Host not found, mongrel2 will not start"
+  else
+    mongrel2 ${CONFIG_DB} ${server}
+    eend $?
+  fi
+}
+
+
+
+stop() {
+  ebegin "Stopping mongrel2 instance, uuid=${SVCNAME}"
+  pid_file=`sqlite3 -noheader ${CONFIG_DB} "select pid_file from server where uuid='${SVCNAME}';"`
+  chr_dir=`sqlite3 -noheader ${CONFIG_DB} "select chroot from server where uuid='${SVCNAME}';"`
+  pid=`cat ${chr_dir}/${pid_file}`
+  ebegin "Stoping mongrel instance uuid=${SVCNAME}, pid=${pid}"
+  kill -s SIGINT ${pid}
+  sleep 1 # just give it some time
+  i=1
+  while [[ "x`ps -p ${pid} -o comm=`" == x"mongrel2" ]] && [[ ${i} -le ${KILL_TRIES} ]]; do
+    ebegin "Kill attempt ${i}/${KILL_TRIES}, sleeping ${TRIES_TIMEOUT} second(s)"
+    kill -s SIGINT ${pid}
+    sleep ${TRIES_TIMEOUT}
+    let i++
+  done
+  ebegin "killing -9 pid ${pid}"
+  kill -9 ${pid}
+  eend $?
+}
+
+list(){
+  sql="select name, uuid as server, bind_addr, port from server;"
+  sqlite3 ${CONFIG_DB} "${sql}"
+}
+
+
