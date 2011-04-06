@@ -51,6 +51,7 @@ stop() {
     sleep ${TRIES_TIMEOUT}
     if [[ ${i} -ge ${KILL_TRIES} ]];then
       eerror "mongrel2 did not stop, you should run kill -9 ${pid}"
+      break
     fi
   done
   [[ "x`ps -p ${pid} -o comm=`" != x"mongrel2" ]]
