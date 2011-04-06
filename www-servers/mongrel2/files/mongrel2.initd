@@ -49,7 +49,7 @@ stop() {
     ebegin "Kill attempt ${i}/${KILL_TRIES}, sleeping ${TRIES_TIMEOUT} second(s)"
     kill -s SIGINT ${pid}
     sleep ${TRIES_TIMEOUT}
-    if [[ ${i} -le ${KILL_TRIES} ]];then
+    if [[ ${i} -ge ${KILL_TRIES} ]];then
       eerror "mongrel2 did not stop, you should run kill -9 ${pid}"
     fi
   done
