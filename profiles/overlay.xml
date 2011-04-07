@@ -1,12 +1,15 @@
-<layman>
- <overlays>
-  <overlay type="git" src="git://github.com/daltonmatos/gentoo-overlay.git" contact="daltonmatos@gmail.com" name="dalton">
-   <link>
-      http://github.com/daltonmatos/gentoo-overlay
-   </link>
-  <description> 
-    A Gentoo overlay with some ebuilds for projects that I am interested to and are not yet on the official tree. 
-  </description>
- </overlay>
-</overlays>
-</layman>
+<repositories version="1.0">
+  <repo quality="experimental" status="unofficial">
+    <name>daltonmatos</name>
+    <description>Overlaey of daltomatos</description>
+    <homepage>
+      https://github.com/daltonmatos/gentoo-overlay/
+    </homepage>
+    <owner>
+      <email>daltonmatos@gmail.com</email>
+      <name>Dalton Barreto</name>
+    </owner>
+    <source type="git">git://github.com/daltonmatos/gentoo-overlay</source>
+    <feed>https://github.com/daltonmatos/gentoo-overlay/commits/master.atom</feed>
+  </repo>
+</repositories>
