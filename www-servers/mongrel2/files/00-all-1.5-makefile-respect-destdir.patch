@@ -1,0 +1,26 @@
+diff -ur mongrel2-1.5/Makefile mongrel2-1.5.new/Makefile
+--- mongrel2-1.5/Makefile	2011-01-10 00:18:13.000000000 +0100
++++ mongrel2-1.5.new/Makefile	2011-04-18 10:54:28.661272687 +0200
+@@ -69,8 +69,8 @@
+ install: all install-bin install-m2sh
+ 
+ install-bin:
+-	install -d $(PREFIX)/bin/
+-	install bin/mongrel2 $(PREFIX)/bin/
++	install -d $(DESTDIR)$(PREFIX)/bin/
++	install bin/mongrel2 $(DESTDIR)$(PREFIX)/bin/
+ 
+ install-m2sh:
+ 	${MAKE} -C tools/m2sh install
+diff -ur mongrel2-1.5/tools/m2sh/Makefile mongrel2-1.5.new/tools/m2sh/Makefile
+--- mongrel2-1.5/tools/m2sh/Makefile	2011-01-10 00:18:13.000000000 +0100
++++ mongrel2-1.5.new/tools/m2sh/Makefile	2011-04-18 10:54:59.292322379 +0200
+@@ -15,7 +15,7 @@
+ dev: all
+ 
+ install: build/m2sh
+-	install build/m2sh ${PREFIX}/bin
++	install build/m2sh $(DESTDIR)$(PREFIX)/bin
+ 
+ build/libm2sh.a: ${LIB_OBJ}
+ 	mkdir -p build
