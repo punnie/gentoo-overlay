@@ -27,5 +27,5 @@ src_prepare(){
 src_install(){
 	emake install DESTDIR=${D} PREFIX="${EPREFIX}"/usr
 	newconfd "${FILESDIR}"/mongrel2.confd mongrel2
-	newinitd "${FILESDIR}"/mongrel2.initd mongrel2
+	newinitd "${FILESDIR}"/mongrel2-2.0.initd mongrel2
 }
