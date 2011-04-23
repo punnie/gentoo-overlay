@@ -20,10 +20,6 @@ DEPEND="dev-db/sqlite:3
 
 RDEPEND="${DEPEND}"
 
-src_prepare(){
-	epatch "${FILESDIR}/00-all-1.5-makefile-respect-destdir.patch"
-}
-
 src_install(){
 	emake install DESTDIR=${D} PREFIX="${EPREFIX}"/usr
 	newconfd "${FILESDIR}"/mongrel2.confd mongrel2
