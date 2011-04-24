@@ -17,20 +17,24 @@ start() {
   ebegin "Starting wsgid instance for app ${appname}"
   # Some sanity checks first
   [[ -d ${app_path} ]] || die "${app_path} does not exist!"
-  wsgid ${APP_BASE_PATH}/${appname}
+  wsgid --app-path=${APP_BASE_PATH}/${appname}
 }
 
 
 
 stop() {
-  ebegin "Stopping wsgid instance for app at ${SVCNAME}"
+  einfo "Stopping all wsgid instances of app ${SVCNAME}"
   # Discover the instance master process PID and send a SIGTERM
-  eend $?
+  for pid in `ls ${APP_BASE_PATH}/${SVCNAME}/pid/master/*.pid`; do
+    ebegin "Killing master process `basename ${pid}`"
+    kill `cat ${pid}`
+    eend $?
+  done
 }
 
 specs(){
   einfo "Socket specs for app ${SVCNAME}"
-  cat ${APP_BASE_PATH}
+  cat ${APP_BASE_PATH}/${SVCNAME}/wsgid.json
 }
 
 

@@ -5,4 +5,4 @@
 # Now you just run /etc/init.d/appname {start,stop}
 
 # Pase path os app apps, one app per folder.
-APP_BASE_NAME="/var/mongrel2/apps"
+APP_BASE_PATH="/var/mongrel2/apps"

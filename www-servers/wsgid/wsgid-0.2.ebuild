@@ -15,11 +15,13 @@ SLOT="0"
 KEYWORDS="~x86"
 IUSE=""
 
-DEPEND=""
+DEPEND=">=www-servers/mongrel2-1.5"
 RDEPEND="${DEPEND}"
 
 
 src_install(){
 	distutils_src_install
 	doman doc/wsgid.8.bz2
+	newconfd "${FILESDIR}"/wsgid.confd wsgid
+	newinitd "${FILESDIR}"/wsgid.initd wsgid
 }
