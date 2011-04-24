@@ -1,0 +1,36 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+source /etc/conf.d/wsgid
+
+opts="${opts} specs"
+
+depend(){ 
+  need net
+}
+
+start() {
+  appname=${SVCNAME}
+  app_path=${APP_BASE_PATH}/${appname}
+  ebegin "Starting wsgid instance for app ${appname}"
+  # Some sanity checks first
+  [[ -d ${app_path} ]] || die "${app_path} does not exist!"
+  wsgid ${APP_BASE_PATH}/${appname}
+}
+
+
+
+stop() {
+  ebegin "Stopping wsgid instance for app at ${SVCNAME}"
+  # Discover the instance master process PID and send a SIGTERM
+  eend $?
+}
+
+specs(){
+  einfo "Socket specs for app ${SVCNAME}"
+  cat ${APP_BASE_PATH}
+}
+
+
