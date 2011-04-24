@@ -20,5 +20,6 @@ RDEPEND="${DEPEND}"
 
 
 src_install(){
+	distutils_src_install
 	doman doc/wsgid.8.bz2
 }
