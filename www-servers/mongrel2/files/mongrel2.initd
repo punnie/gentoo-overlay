@@ -41,13 +41,13 @@ stop() {
   chr_dir=`sqlite3 -noheader ${CONFIG_DB} "select chroot from server where uuid='${SVCNAME}';"`
   pid=`cat ${chr_dir}/${pid_file}`
   ebegin "Stoping mongrel instance uuid=${SVCNAME}, pid=${pid}"
-  kill -s SIGINT ${pid}
+  kill -2 ${pid}
   sleep 1 # just give it some time
   i=0
   while [[ "x`ps -p ${pid} -o comm=`" == x"mongrel2" ]]; do
     let i++
     ebegin "Kill attempt ${i}/${KILL_TRIES}, sleeping ${TRIES_TIMEOUT} second(s)"
-    kill -s SIGINT ${pid}
+    kill -2 ${pid}
     sleep ${TRIES_TIMEOUT}
     if [[ ${i} -ge ${KILL_TRIES} ]];then
       eerror "mongrel2 did not stop, you should run kill -9 ${pid}"
