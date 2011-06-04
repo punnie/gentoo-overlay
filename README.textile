@@ -10,6 +10,12 @@ h2. How to configure layman to manage this overlay
 * ??????
 * Profit!
 
+h2. Small note about rvm ebuilds
+
+When emerging @dev-ruby/rvm@, @FEATURES="-sandbox"@ should be passed on to portage, or else it will fail with a lot of "ACCESS DENIED" errors. 
+
+I wouldn't recommend emerging multiple packages with this flag set this way, as it disables portage's sandbox which may cause failed merges to litter your system, possibly even breaking it.
+
 h2. Thanks
 
 To daltonmatos for creating the original overlay and giving me the idea, along with some nice ebuilds, along the way.
