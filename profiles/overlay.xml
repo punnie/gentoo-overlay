@@ -1,15 +1,15 @@
 <repositories version="1.0">
   <repo quality="experimental" status="unofficial">
-    <name>daltonmatos</name>
-    <description>Overlaey of daltomatos</description>
+    <name>punnie</name>
+    <description>Punnie's Overlay</description>
     <homepage>
-      https://github.com/daltonmatos/gentoo-overlay/
+      https://github.com/punnie/gentoo-overlay/
     </homepage>
     <owner>
-      <email>daltonmatos@gmail.com</email>
-      <name>Dalton Barreto</name>
+      <email>pedro.luis.coelho@gmail.com</email>
+      <name>Pedro Coelho</name>
     </owner>
-    <source type="git">git://github.com/daltonmatos/gentoo-overlay</source>
-    <feed>https://github.com/daltonmatos/gentoo-overlay/commits/master.atom</feed>
+    <source type="git">git://github.com/punnie/gentoo-overlay</source>
+    <feed>https://github.com/punnie/gentoo-overlay/commits/master.atom</feed>
   </repo>
 </repositories>
