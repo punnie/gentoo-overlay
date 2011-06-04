@@ -1,0 +1,15 @@
+h1. Punnie's Overlay
+
+A small gentoo overlay containing some packages of interest.
+
+h2. How to configure layman to manage this overlay
+
+* Open @/etc/layman/layman.cfg@. 
+* Find the line with @overlays :@ and add, in a new line, this URL: @http://github.com/punnie/gentoo-overlay/raw/master/profiles/overlay.xml@
+* Run: @layman -a punnie@.
+* ??????
+* Profit!
+
+h2. Thanks
+
+To daltonmatos for creating the original overlay and giving me the idea, along with some nice ebuilds, along the way.
