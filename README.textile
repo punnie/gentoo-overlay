@@ -4,11 +4,11 @@ A small gentoo overlay containing some packages of interest.
 
 h2. How to configure layman to manage this overlay
 
-* Open @/etc/layman/layman.cfg@. 
-* Find the line with @overlays :@ and add, in a new line, this URL: @http://github.com/punnie/gentoo-overlay/raw/master/profiles/overlay.xml@
-* Run: @layman -a punnie@.
-* ??????
-* Profit!
+bc. # emerge layman
+sed -i.bak '/^\s*overlays\s*\:/a\
+ http://github.com/punnie/gentoo-overlay/raw/master/profiles/overlay.xml' /etc/layman/layman.cfg
+layman -S
+layman -a punnie
 
 h2. Small note about rvm ebuilds
 
